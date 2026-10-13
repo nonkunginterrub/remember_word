@@ -89,7 +89,7 @@ Build และ deploy ผ่าน (สถานะ **Ready**) แต่พอ�
 
 | # | ปัญหา | ความสำคัญ | วิธีแก้ |
 |---|---|---|---|
-| 4.1 | **โปรเจกต์ซ้ำใน "My Team" ยังอยู่** และ deploy ล้มเหลวทุกครั้งที่ push (ล่าสุด: `remember-word-kcbhd7doy-my-team-573a1e58.vercel.app` สถานะ **Error**) | 🔴 สูง | `vercel project rm remember-word --scope my-team-573a1e58` แล้วตอบ `y` |
+| 4.1 | **โปรเจกต์ซ้ำใน "My Team" ยังอยู่** และ deploy ล้มเหลวทุกครั้งที่ push (ล่าสุด: `remember-word-kcbhd7doy-my-team-573a1e58.vercel.app` สถานะ **Error**) | ✅ แก้แล้ว | ลบด้วย `vercel project rm remember-word --scope my-team-573a1e58` เมื่อ 2026-10-13 |
 | 4.2 | บัญชีทดสอบ `e2e-test-1791872378697@example.com` ยังอยู่ในฐานข้อมูลจริง (ลบคำศัพท์ทดสอบแล้ว) | 🟡 ต่ำ | Neon Console → SQL Editor: `DELETE FROM users WHERE email LIKE 'e2e-test-%@example.com';` |
 | 4.3 | `.env.local` ในเครื่องไม่มี `DATABASE_URL` จึงรัน `npm run dev` กับฐานข้อมูลจริงไม่ได้ | 🟡 ต่ำ | คัดลอก connection string จาก Neon Console มาใส่เอง |
 | 4.4 | `npm audit` แจ้งช่องโหว่ระดับ high 5 รายการ ยังไม่ได้ตรวจ | 🟠 กลาง | รัน `npm audit` ดูรายละเอียดก่อน (ไม่ควรใช้ `--force`) |
