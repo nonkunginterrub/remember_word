@@ -5,6 +5,8 @@
 **Stack:** Next.js 16 (App Router, TypeScript) · Redux Toolkit + RTK Query · PostgreSQL (Neon) · Deploy บน Vercel
 
 รายละเอียดการออกแบบทั้งหมดอยู่ใน [PLAN.md](PLAN.md)
+· รายงานการ deploy: [docs/report_deploy.md](docs/report_deploy.md)
+· คู่มือเรียนรู้การ deploy: [docs/DEPLOY_LEARNING.md](docs/DEPLOY_LEARNING.md)
 
 ## เริ่มใช้งานในเครื่อง
 
