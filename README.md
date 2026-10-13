@@ -27,6 +27,7 @@ npm run dev                    # เปิด http://localhost:3000
 | `npm run typecheck` | ตรวจ type ด้วย TypeScript |
 | `npm run build` | build สำหรับ production |
 | `npm run db:migrate` | สร้าง/อัปเดตตาราง (รันซ้ำได้) |
+| `npm run vercel-build` | ใช้บน Vercel เท่านั้น: migrate ฐานข้อมูลแล้ว build (Vercel เรียกให้อัตโนมัติ) |
 
 ## Deploy ขึ้น Vercel
 
@@ -34,8 +35,8 @@ npm run dev                    # เปิด http://localhost:3000
 2. vercel.com → **Add New Project** → เลือก repo
 3. แท็บ **Storage → Create Database → Neon (Postgres)** → Connect กับโปรเจกต์ (ได้ `DATABASE_URL` อัตโนมัติ)
 4. **Settings → Environment Variables** เพิ่ม `JWT_SECRET` (ยาว ≥ 32 ตัวอักษร)
-5. ในเครื่อง: `vercel env pull .env.local` แล้ว `npm run db:migrate`
-6. กด **Redeploy** — หลังจากนี้ push ไป `main` จะ deploy อัตโนมัติ
+5. Deploy — ตอน build บน Vercel จะรัน `db/migrate.mts` สร้างตารางให้อัตโนมัติ (script `vercel-build`)
+   หลังจากนี้ push ไป `main` จะ deploy อัตโนมัติ
 
 ## โครงสร้างโปรเจกต์
 
