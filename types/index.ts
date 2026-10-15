@@ -59,6 +59,21 @@ export interface Stats {
   mostMissed: { id: number; word: string; meaning: string; wrongCount: number }[];
 }
 
+export type Word3000Level = 'A1' | 'A2' | 'B1' | 'B2';
+
+export interface Word3000Question {
+  id: number;
+  level: Word3000Level;
+  pos: string;
+  meaning: string;
+  hint: string;
+}
+
+export interface Word3000Result extends QuestionAnswer {
+  id: number;
+  meaning: string;
+}
+
 export interface ApiError {
   error: string;
 }

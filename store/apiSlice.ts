@@ -1,6 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { Credentials, WordInput } from '@/lib/validators';
-import type { AnswerResult, Stats, TodayQuiz, User, Word } from '@/types';
+import type {
+  AnswerResult,
+  Stats,
+  TodayQuiz,
+  User,
+  Word,
+  Word3000Level,
+  Word3000Question,
+  Word3000Result,
+} from '@/types';
 
 // RTK Query: เรียก API + cache ข้อมูลจาก server
 // tags ใช้บอกว่าเมื่อข้อมูลเปลี่ยน ต้องโหลดข้อมูลส่วนไหนใหม่
@@ -59,6 +68,18 @@ export const api = createApi({
       invalidatesTags: ['Quiz', 'Stats'],
     }),
 
+    // ---------- Oxford 3000 ----------
+    // ใช้ mutation เพราะต้องการคำใหม่ทุกครั้งที่เรียก (ไม่ต้อง cache)
+    getWord3000Question: build.mutation<Word3000Question, { level: Word3000Level | null; exclude: number[] }>({
+      query: ({ level, exclude }) => ({
+        url: 'word3000/question',
+        params: { ...(level ? { level } : {}), ...(exclude.length ? { exclude: exclude.join(',') } : {}) },
+      }),
+    }),
+    submitWord3000Answer: build.mutation<Word3000Result, { id: number; answer: string }>({
+      query: (body) => ({ url: 'word3000/answer', method: 'POST', body }),
+    }),
+
     // ---------- stats ----------
     getStats: build.query<Stats, void>({
       query: () => 'stats',
@@ -79,6 +100,8 @@ export const {
   useGetTodayQuizQuery,
   useSubmitAnswerMutation,
   useFinishQuizMutation,
+  useGetWord3000QuestionMutation,
+  useSubmitWord3000AnswerMutation,
   useGetStatsQuery,
 } = api;
 

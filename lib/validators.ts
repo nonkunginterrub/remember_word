@@ -1,5 +1,6 @@
 // zod schemas ที่ใช้ร่วมกันทั้งฟอร์มฝั่งหน้าเว็บและ API
 import { z } from 'zod';
+import type { Word3000Level } from '@/types';
 
 export const credentialsSchema = z.object({
   email: z
@@ -34,6 +35,14 @@ export const wordSchema = z.object({
 
 export const answerSchema = z.object({
   wordId: z.number().int().positive(),
+  answer: z.string().max(200),
+});
+
+// ระดับคำศัพท์ Oxford 3000 — แยกไว้ที่นี่ เพื่อให้หน้าเว็บใช้ได้โดยไม่ต้องโหลดคลังคำทั้งหมด
+export const WORD3000_LEVELS = ['A1', 'A2', 'B1', 'B2'] as const satisfies readonly Word3000Level[];
+
+export const word3000AnswerSchema = z.object({
+  id: z.number().int().nonnegative(),
   answer: z.string().max(200),
 });
 

@@ -10,6 +10,7 @@ const LINKS = [
   { href: '/', label: 'หน้าแรก' },
   { href: '/words', label: 'คลังคำ' },
   { href: '/quiz', label: 'ทายคำวันนี้' },
+  { href: '/word3000', label: 'Oxford 3000' },
 ] as const;
 
 export default function Navbar() {

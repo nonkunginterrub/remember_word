@@ -282,6 +282,8 @@ button {
 .quiz-example { color: var(--muted); font-style: italic; }
 .quiz-hint { font-family: ui-monospace, monospace; letter-spacing: 0.05em; color: var(--muted); }
 .quiz-input { font-size: 1.2rem; padding: 12px 14px; }
+.level-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.level-badge { background: var(--primary); color: var(--primary-text); }
 
 .progress { display: flex; flex-direction: column; gap: 6px; }
 .progress-label { font-size: 0.9rem; color: var(--muted); }
